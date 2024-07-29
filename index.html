@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+</head>
+<body>
+	<script type="module">
+		import {createTable} from "./createTableView.js";
+		import {saveFormData} from "./appendData.js";
+		import {removeLastElement} from "./removeLastElement.js";
+		import {removeElementAtIndex} from "./removeElementAtIndex.js";
+		import {addElementToTop} from "./addElementToTop.js";
+		import {addElementAtIndex} from "./addElementAtIndex.js";
+		import {parseCSVString} from "./parseCSVString.js";
+
+		/*Here we using window because window object represents browser window, this window object has global scope
+		here we are accessing saveFormData, removeLastElement, removeElementAtIndex, addElementToTop, addElementAtIndex,
+		parseCSVString outside the module scope that means inside the html outside script tag, thats why we need to use
+		window object with these functions to redefine there scope.
+		We are not using window object with createTable because we are not using createTable function outside the
+		the module scope.*/
+
+		window.saveFormData = saveFormData
+		window.removeLastElement = removeLastElement
+		window.removeElementAtIndex = removeElementAtIndex
+		window.addElementToTop = addElementToTop;
+		window.addElementAtIndex = addElementAtIndex;
+		window.parseCSVString = parseCSVString;
+		//window.creareTable = createTable
+		//Here we have create an array containing objects
+
+		/*let arrayOfObjects = [
+			{
+				name: "Vilas Shetkar",
+				email: "vilasshetkar@gmail.com",
+				mobileNo: 9988776655
+			},
+			{
+				name: "Akshay Surjuse",
+				email: "akshaysurjuse@gmail.com",
+				mobileNo: 8899776655
+			},
+			{
+				name: "Gaurav Phatkar",
+				email: "gauravphatkar@gmail.com",
+				mobileNo: 7789986655
+			},
+			{
+				name: "Onkar Londhe",
+				email: "onkarlondhe@gmail.com",
+				mobileNo: 9888776655
+			},
+			{
+				name: "Sagar Belsare",
+				email: "sagarbelsare@gmail.com",
+				mobileNo: 8988776655
+			}
+		];*/
+
+	</script>
+
+	<form id="form">
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name"  placeholder="enter a name">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="enter an email">
+        <label for="mobileNo">Mobile No</label>
+        <input type="number" name="mobileNo" id="mob" placeholder="enter mobile no">
+        <button type="button" onclick="saveFormData()">Submit</button>
+	</form>
+
+	<br>
+    <table rules="all" id="table">
+		
+	</table>
+	<br>
+	<button onclick="removeLastElement()">RemoveLastElement</button> <button type="button" onclick="removeElementAtIndex()">RemoveElementAtIndex</button> <button type="button" onclick="addElementToTop()">AddElementAtToTop</button>
+	<button onclick="addElementAtIndex()">AddElementAtIndex</button> <button onclick="parseCSVString()">parseCSVString</button>
+	
+</body>
+</html>
